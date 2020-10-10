@@ -93,7 +93,7 @@ class login extends StatelessWidget {
                                       color: Colors.white
                                   ),),
                                   onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Home()));
                                   },
                                 ),
                               ),

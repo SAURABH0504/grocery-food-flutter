@@ -148,7 +148,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
@@ -177,7 +177,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
@@ -206,7 +206,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
@@ -235,7 +235,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
@@ -264,7 +264,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
@@ -293,7 +293,7 @@ class GroceryScreen extends StatelessWidget {
                                       child: FlatButton(
                                         child: Text(' '),
                                         onPressed: (){
-                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ViewGrocery()));
                                         },
                                       ),
                                     ),
