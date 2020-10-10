@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(seconds: 2,
-      navigateAfterSeconds: Home(),
+      navigateAfterSeconds: login(),
       title: Text('Welcome',style: TextStyle(
         color: Colors.white,
         fontSize: 25,
