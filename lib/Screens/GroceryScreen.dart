@@ -1,186 +1,313 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vendor_app/Models/Vegetables.dart';
+import 'package:vendor_app/Screens/ViewGrocery.dart';
 
 class GroceryScreen extends StatelessWidget {
-  List<Vegetables> vegetables=[
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-    Vegetables('Tomato',120,3.5,'Images/tomato.jpg'),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: Column(
           children: [
+               // top menu containing search bar
                Expanded(
                  flex: 1,
-                 child: Row(
-                  children: [
-                    Expanded(
-                      flex: 5,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: Container(
-                            child: Text('Your Location',style: TextStyle(
-                              color: Colors.orange
-                            ),),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.search,
-                        ),
-                        onPressed: (){
-                        },
-                      ),
-                    )
-                  ],
-              ),
+                 child: Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Container(
+                     decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(50),
+                       color: Colors.grey.shade200
+                     ),
+                     child: Row(
+                       children: [
+                         Expanded(
+                           flex: 3,
+                           child: Center(
+                             child: Text('Location',style: TextStyle(
+                                 color: Colors.grey.shade400
+                             ),),
+                           ),
+                         ),
+                         Expanded(
+                           flex: 1,
+                           child: IconButton(
+                             icon: Icon(Icons.location_on,color: Colors.blue,),
+                             onPressed: (){
+                             },
+                           ),
+                         )
+                       ],
+                     )
+                   ),
+                 ),
                ),
-              Divider(
+               Divider(
               thickness: 1,
                ),
+               //It contains Slider for banner and grid view of category
                Expanded(
                  flex: 10,
                  child: Column(
                   children: [
+                    //Slider for banner
                     Expanded(
                       flex: 1,
                       child: CarouselSlider(
                           items: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                image: DecorationImage(
-                                  image: AssetImage('Images/1.jpg'),
-                                  fit: BoxFit.cover
-                                )
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                  image: DecorationImage(
+                                    image: AssetImage('Images/1.jpg'),
+                                    fit: BoxFit.cover
+                                  )
+                                ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                      image: AssetImage('Images/2.jpg'),
-                                      fit: BoxFit.cover
-                                  )
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: AssetImage('Images/2.jpg'),
+                                        fit: BoxFit.cover
+                                    )
+                                ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  image: DecorationImage(
-                                      image: AssetImage('Images/3.jpg'),
-                                      fit: BoxFit.cover
-                                  )
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: AssetImage('Images/3.jpg'),
+                                        fit: BoxFit.cover
+                                    )
+                                ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  image: DecorationImage(
-                                      image: AssetImage('Images/4.jpg'),
-                                      fit: BoxFit.cover
-                                  )
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: AssetImage('Images/4.jpg'),
+                                        fit: BoxFit.cover
+                                    )
+                                ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  image: DecorationImage(
-                                      image: AssetImage('Images/5.jpg'),
-                                      fit: BoxFit.cover
-                                  )
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.rectangle,
+                                    image: DecorationImage(
+                                        image: AssetImage('Images/5.jpg'),
+                                        fit: BoxFit.cover
+                                    )
+                                ),
                               ),
                             )
                           ],
                           options: CarouselOptions(
-                            viewportFraction: 0.8,
-                            height: 100,
+                            viewportFraction: 0.9,
+                            height: 140,
                             autoPlayCurve: Curves.easeInCubic
                           ),
                         ),
                     ),
+                    //GridView of category
                     Expanded(
-                      flex: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: ListView.separated(itemBuilder: (context,index){
-                          return Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Image(
-                                  image: AssetImage(vegetables[index].imageId),
-                                ),
-                              ),
-                              Expanded(
-                                flex: 3,
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Center(
-                                        child: Text(vegetables[index].name,style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15
-                                        ),),
+                      flex: 3,
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5,
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  size: 10,
-                                                ),
-                                                Text(vegetables[index].rating.toString(),style: TextStyle(
-                                                    fontSize: 10
-                                                )),
-                                              ],
-                                            ),
-                                            ),
-                                              Expanded(
-                                                child: Row(
-                                                  children: [
-                                                    Icon(
-                                                      Icons.attach_money,
-                                                      size: 10,
-                                                    ),
-                                                    Text(vegetables[index].price.toString(),style: TextStyle(
-                                                        fontSize: 10
-                                                    )),
-                                                  ],
-                                                ),
-                                              )
-                                        ],
-                                        ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
                               )
-                            ],
-                          );
-                        }, separatorBuilder: (context,index) => Divider(), itemCount: vegetables.length),
-                      ),
-                    )
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
+                              )
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
+                              )
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
+                              )
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
+                              )
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.rectangle,
+                                          image: DecorationImage(
+                                              image: AssetImage('Images/green.jpg'),
+                                              fit: BoxFit.fill
+                                          )
+                                      ),
+                                      child: FlatButton(
+                                        child: Text(' '),
+                                        onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>ViewGrocery()));
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text('Category1'),
+                                  )
+                                ],
+                              )
+                          ),
+                        ],
+                      )
+                    ),
                   ]
               ),
                ),

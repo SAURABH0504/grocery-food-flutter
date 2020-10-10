@@ -20,34 +20,32 @@ class FoodDeliveryScreen extends StatelessWidget {
        children: [
          Expanded(
            flex: 1,
-           child: Row(
-             children: [
-               Expanded(
-                 flex: 5,
-                   child: Padding(
-                     padding: const EdgeInsets.all(20.0),
-                     child: Container(
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(10),
-                       ),
-                       child: Text('Your Location',style: TextStyle(
-                           color: Colors.orange
-                       ),),
-                     ),
+           child: Container(
+             decoration: BoxDecoration(
+                 borderRadius: BorderRadius.circular(50),
+                 color: Colors.grey.shade200
+             ),
+             child: Row(
+               children: [
+                 Expanded(
+                   flex: 3,
+                   child: Center(
+                     child: Text('Location',style: TextStyle(
+                         color: Colors.grey.shade400
+                     ),),
                    ),
-               ),
-               Expanded(
-                 flex: 1,
-                 child: IconButton(
-                   icon: Icon(
-                     Icons.search,
-                   ),
-                   onPressed: (){
-                   },
                  ),
-                ),
-                ]
-               )
+                 Expanded(
+                   flex: 1,
+                   child: IconButton(
+                     icon: Icon(Icons.location_on,color: Colors.blue,),
+                     onPressed: (){
+                     },
+                   ),
+                 )
+               ],
+             ),
+           )
              ),
                Expanded(
                  flex: 10,
