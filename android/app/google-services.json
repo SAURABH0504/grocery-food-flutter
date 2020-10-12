@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "209118255246",
+    "firebase_url": "https://homedelivery199-cd311.firebaseio.com",
+    "project_id": "homedelivery199-cd311",
+    "storage_bucket": "homedelivery199-cd311.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209118255246:android:43a61df3f2abad14c251df",
+        "android_client_info": {
+          "package_name": "com.example.vendor_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209118255246-u4f126juk4fkpequ8ri9tnso41ojaj4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSmgMStzpFmO1hcr-HVH01h10dc0iIrjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209118255246-u4f126juk4fkpequ8ri9tnso41ojaj4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
