@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\react2019\\vendor_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-da\\values-da.xml",
+            "outputFile": "/Users/vaibhavagarwal/AndroidStudioProjects/grocery-food-flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-da/values-da.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\SAURABH\\.gradle\\caches\\transforms-2\\files-2.1\\74dea038c09d2c76195c20e43bb7f9e7\\jetified-play-services-basement-17.0.0\\res\\values-da\\values.xml",
+                    "source": "/Users/vaibhavagarwal/.gradle/caches/transforms-2/files-2.1/851fb695df4b4a0a4a08a0c526d7fa95/jetified-play-services-basement-17.0.0/res/values-da/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\SAURABH\\.gradle\\caches\\transforms-2\\files-2.1\\12b2a981af48a4d34665a895e1a50203\\play-services-base-17.1.0\\res\\values-da\\values.xml",
+                    "source": "/Users/vaibhavagarwal/.gradle/caches/transforms-2/files-2.1/12b2a981af48a4d34665a895e1a50203/play-services-base-17.1.0/res/values-da/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\SAURABH\\.gradle\\caches\\transforms-2\\files-2.1\\44b1706abe044cd42dcac5be863451ed\\core-1.1.0\\res\\values-da\\values-da.xml",
+                    "source": "/Users/vaibhavagarwal/.gradle/caches/transforms-2/files-2.1/44b1706abe044cd42dcac5be863451ed/core-1.1.0/res/values-da/values-da.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
