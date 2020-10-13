@@ -1,8 +1,11 @@
+import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:vendor_app/Services/authservice.dart';
-import 'package:vendor_app/screens/HomeScreen.dart';
+import 'package:vendor_app/Login-Signup/AuthServices.dart';
+import 'package:vendor_app/Screens/HomeScreen.dart';
 
 class login extends StatefulWidget {
   @override
@@ -10,28 +13,12 @@ class login extends StatefulWidget {
 }
 
 class _LoginPageState extends State<login> {
-
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
-  final formKey = new GlobalKey<FormState>();
-
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  GoogleSignIn googleSignIn = GoogleSignIn();
+  String userName;
+  String userImageUrl;
   String phoneNo, verificationId, smsCode;
-
   bool codeSent = false;
-
-  _googleLoginIn() async
-  {
-    try {
-      await _googleSignIn.signIn();
-      if (_googleSignIn.currentUser != null) {
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) => Home(),
-        ));
-      }
-    }
-    catch (e) {
-      print(e);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,106 +61,136 @@ class _LoginPageState extends State<login> {
               SizedBox(
                 height: 50,
               ),
-              Form(
-                  key: formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.phone,
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                              contentPadding:
-                              EdgeInsets.symmetric(horizontal: 20),
-                              labelText: 'Phone No. ',
-                              labelStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(),
-                              ),
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                this.phoneNo = "+91" + val;
-                              });
-                            },
-                          )),
-                      codeSent
-                          ? Padding(
-                          padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.phone,
-                            style: TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                              contentPadding:
-                              EdgeInsets.symmetric(horizontal: 20),
-                              labelText: 'OTP',
-                              labelStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(),
-                              ),
-                            ),
-                            onChanged: (val) {
-                              setState(() {
-                                this.smsCode = val;
-                              });
-                            },
-                          ))
-                          : Container(),
-                      Padding(
-                          padding: EdgeInsets.fromLTRB(150, 30, 150, 50),
-                          child: RaisedButton(
-                              color: Colors.black,
-                              child: Center(
-                                  child: codeSent
-                                      ? Text(
-                                    'Login',
-                                    style: TextStyle(color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.symmetric(),
+                    color: Colors.white,
+
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.black,
+                                  hintText: 'Enter your number',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black,
                                   )
-                                      : Text(
-                                    'Verify',
-                                    style: TextStyle(color: Colors.white),
-                                  )),
-                              onPressed: () {
-                                codeSent
-                                    ? AuthService()
-                                    .signInWithOTP(smsCode, verificationId)
-                                    : verifyPhone(phoneNo);
-                              }))
+                              ),
+                              maxLengthEnforced: false,
+                              onChanged: (val) {
+                                setState(() {
+                                  val = '+91 ' + val;
+                                  this.phoneNo = val;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
-                  )),
+                  ),
+                ),
+              ),
+              codeSent ? Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.symmetric(),
+                    color: Colors.white,
+
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                  fillColor: Colors.black,
+                                  hintText: 'Enter OTP',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black,
+                                  )
+                              ),
+                              maxLengthEnforced: false,
+                              onChanged: (val) {
+                                setState(() {
+                                  this.smsCode = val;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ) : Container(),
+              OutlineButton(
+                borderSide: BorderSide(
+                    width: 1,
+                    color: Colors.white
+                ),
+                hoverColor: Colors.white,
+                highlightedBorderColor: Colors.white,
+                child: codeSent ? Text(
+                  'LogIn', style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                ),
+                ) : Text(
+                  'Verify', style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                ),
+                ),
+                color: Colors.black,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                onPressed: () {
+                  codeSent ? AuthService().signInWithOTP(
+                      smsCode, verificationId) : verifyPhone(phoneNo);
+                },
+              ),
+              Text(
+                'or', style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white38
+              ),
+
+              ),
               SizedBox(
                 height: 20,
               ),
-              FlatButton(
-
-                onPressed: () {
-                  AuthService().googleSignIn(context);
-                },
-                child: Column(
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 30,
-                      child: Image(
-                        image: AssetImage('Images/googleIcon.jpg'),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(13.0),
-                      child: Text('SignIn with Google',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),),
-                    ),
-                  ],
-                ),
-
-              )
+              RaisedButton(
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('Images/googleIcon.jpg'),
+                    backgroundColor: Colors.white,
+                    radius: 25,
+                  ),
+                  onPressed: () async{
+                    if(await signInwithGoogle() != false)
+                      {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Home()));
+                      }
+                  }
+              ),
+              Text('Sign in with Google')
             ],
           ),
         ),
@@ -183,12 +200,11 @@ class _LoginPageState extends State<login> {
 
   Future<void> verifyPhone(phoneNo) async {
     final PhoneVerificationCompleted verified = (AuthCredential authResult) {
-      AuthService().signIn(authResult);
+      AuthService().signIn(phoneNo);
     };
-
-    final PhoneVerificationFailed verificationfailed =
-        (Exception authException) {
-      print('${authException.toString()}');
+    final PhoneVerificationFailed verificationFailed = (
+        FirebaseAuthException authException) {
+      print('${authException.message}');
     };
 
     final PhoneCodeSent smsSent = (String verId, [int forceResend]) {
@@ -202,12 +218,37 @@ class _LoginPageState extends State<login> {
       this.verificationId = verId;
     };
 
-    await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phoneNo,
-        timeout: const Duration(seconds: 3),
-        verificationCompleted: verified,
-        verificationFailed: verificationfailed,
-        codeSent: smsSent,
-        codeAutoRetrievalTimeout: autoTimeout);
+    await FirebaseAuth.instance.verifyPhoneNumber(phoneNumber: phoneNo,
+      verificationCompleted: verified,
+      verificationFailed: verificationFailed,
+      codeSent: smsSent,
+      codeAutoRetrievalTimeout: autoTimeout,
+      timeout: const Duration(seconds: 5),
+    );
+  }
+  Future<bool> signInwithGoogle() async {
+    await Firebase.initializeApp();
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn
+        .signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication = await
+    googleSignInAccount.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential authResult = await
+    firebaseAuth.signInWithCredential(credential);
+    final User user = authResult.user;
+    if (user != null) {
+      assert(user.displayName != null);
+      assert(user.email != null);
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+      final User currentUser = firebaseAuth.currentUser;
+      assert(user.uid == currentUser.uid);
+      return true;
+    }
+    return false;
   }
 }
