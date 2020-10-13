@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:vendor_app/Models/Food.dart';
+import 'package:vendor_app/Screens/AddressFormScreen.dart';
 
 class FoodDeliveryScreen extends StatelessWidget {
   List<Food> food=[
@@ -40,6 +41,8 @@ class FoodDeliveryScreen extends StatelessWidget {
                    child: IconButton(
                      icon: Icon(Icons.location_on,color: Colors.blue,),
                      onPressed: (){
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>AddressFormScreen()));
+
                      },
                    ),
                  )
