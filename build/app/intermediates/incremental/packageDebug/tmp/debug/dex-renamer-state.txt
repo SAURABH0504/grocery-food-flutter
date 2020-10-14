@@ -1,4 +1,4 @@
-#Tue Oct 13 11:25:55 IST 2020
+#Wed Oct 14 10:08:40 IST 2020
 base.0=D\:\\react2019\\vendor_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.1=classes2.dex
 renamed.1=classes2.dex

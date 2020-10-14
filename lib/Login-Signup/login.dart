@@ -197,7 +197,6 @@ class _LoginPageState extends State<login> {
       ),
     );
   }
-
   Future<void> verifyPhone(phoneNo) async {
     final PhoneVerificationCompleted verified = (AuthCredential authResult) {
       AuthService().signIn(phoneNo);
